@@ -30,6 +30,9 @@ public class UIctrl_player : MonoBehaviour
 
     [SerializeField] private Stats info;
 
+    [SerializeField] private Button btnSetting;
+    [SerializeField] private GameObject panelSetting,heli;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,10 @@ public class UIctrl_player : MonoBehaviour
         }
         info.score = 0;
         info.hp = 1.0f;
+
+        btnSetting.onClick.AddListener(clickSetting);
+        //panelSetting = FindObjectOfType<UIctrl_setting>().gameObject;
+        //panelSetting = GameObject.Find("setting_menu");
     }
 
     // Update is called once per frame
@@ -64,4 +71,10 @@ public class UIctrl_player : MonoBehaviour
         info.hp_bar_text.text =  _playerState.currentHealth + " / " + _playerState.maxHealth;
         info.hp_bar.fillAmount = _playerState.currentHealth * (1.0f / _playerState.maxHealth);
     }
+    private void clickSetting(){
+        Debug.Log("[Log] setting");
+        panelSetting.SetActive(true);
+        heli.SetActive(false);
+    }
 }
+

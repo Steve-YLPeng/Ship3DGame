@@ -10,9 +10,11 @@ public class UIctrl_setting : MonoBehaviour
     public Button btnReturn, btnApply;
     public Slider slider1,slider2;
     public Dropdown d_Dropdown;
+    [SerializeField] private GameObject heli;
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         btnReturn.onClick.AddListener(clickReturn);
         btnApply.onClick.AddListener(clickApply);
         slider1.onValueChanged.AddListener(delegate {BGMChange(); });
@@ -30,10 +32,12 @@ public class UIctrl_setting : MonoBehaviour
     private void clickReturn(){
         Debug.Log("[Log] clickReturn");
         panelCurrent.SetActive(false);
+        heli.SetActive(true);
     }
     private void clickApply(){
         Debug.Log("[Log] clickApply");
         panelCurrent.SetActive(false);
+        heli.SetActive(true);
     }
 
     // Invoked when the value of the slider changes.
@@ -47,6 +51,7 @@ public class UIctrl_setting : MonoBehaviour
                 s.source.volume = s.volume;
             }
         }
+        setting_stat.bgmVolume = slider1.value;
 
     }
     public void effectChange(){

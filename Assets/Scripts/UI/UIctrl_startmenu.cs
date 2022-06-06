@@ -15,7 +15,9 @@ public class UIctrl_startmenu : MonoBehaviour
         btnStart.onClick.AddListener(clickStart);
         btnSetting.onClick.AddListener(clickSetting);
         FindObjectOfType<audio_manager>().play("BGM");
-        
+        if(panelSetting == null){
+            panelSetting = FindObjectOfType<UIctrl_setting>().gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -25,6 +27,8 @@ public class UIctrl_startmenu : MonoBehaviour
     }
     private void clickSetting(){
         Debug.Log("[Log] setting");
+        
+        
         panelSetting.SetActive(true);
     }
     private void clickStart(){
